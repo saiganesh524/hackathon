@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./images/favicon-32x32.png">
+    <title>BikeLove</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!----  Navigation Bar ---->
+    <header class="nav-bar flex-container">
+        <div class="logo">
+            <a><i class="fa-solid fa-bars" style="color: #ffffff;"></i> BikersLove</a>
+        </div>
+        <div class="nav-items">
+            <a class="nav-item" href="#">WISHLIST <i class="fa-regular fa-heart"></i></a><span class="superset"
+                id="wishlist"></span>
+            <a class="nav-item" href="#">CART <i class="fa-solid fa-bag-shopping"></i></a><span class="superset"
+                id="cart"></span>
+            <a class="nav-item" href="#"> SELECT CITY<i class="fa-solid fa-location-dot"
+                    style="color: #ffffff;"></i></a>
+            <a><i class="fa-regular fa-user"></i> LOGIN<i class="fa-solid fa-chevron-down"></i></a>
+        </div>
+    </header>
+    <main>
+        <section class="welcome-box">
+            <h1>FIND THE RIGHT BIKE</h1>
+            <p class="banner-subheading">Get Comprehensive Information on Bike Prices, Specs, Reviews &More!</p>
+            <div class="search-box flex-container">
+                <div class="nav-search-icon">
+                    <input type="text" id="myInput" oninput="searchingProducts()"
+                        placeholder="Search your bike here, e.g. Royal Enfield Hunter 350" tabindex="1"
+                        aria-label="Search your bike">
+                </div>
+                <div class="search-btn">
+                    <input type="button" id="btnSearch" class="btn btn-orange" tabindex="2" value="Search"
+                        aria-label="Search">
+                </div>
+            </div>
+        </section>
+        <!-- ------------------------Main content---------------------------- -->
+        <div class="page-one-content">
+            <section class="mobile-view">
+                <!-- --------------MOBILE BUTTONS SECTION-------------------- -->
+                <div class="mobile-results-text" id="mobile-results-display">
+                    <!-- From javascript -->
+                </div>
+            </section>
+            <section class="desktop-view">
+                <!-- ----------------DESKTOP INFORMATION SECTION---------------------- -->
+                <div class="menu-section">
+                    <div class="home-mobiles-text">
+                        <a href="#">HOME / BIKES</a>
+                    </div>
+                    <div class="showing-no-of-products" id="results-display">
+                        <!-- from javascript -->
+                    </div>
+                    <div class="sortby-text">
+                        <a class="sortby-items">Sort By</a>
+                        <a class="sortby-items" id="sortby-price">Price low-High</a>
+                        <a class="sortby-items" id="sortby-new">Price High-low</a>
+                    </div>
+                </div>
+            </section>
+            <!-- ----------------DESKTOP FILTERS SECTION-------------------- -->
+            <div class="flex-container">
+                <aside class="desktop-view">
+                    <form>
+                        <div class="filters">
+                            <div class="filters-clearall-text flex-container">
+                                <p class="filters-text">FILTERS</p>
+                                <p class="clearall-text">CLEAR ALL</p>
+                            </div>
+                            <details class="filter-items-container">
+                                <summary class="filter-item flex-container">
+                                    <p>Price</p>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </summary>
+                                <div class="wrapper">
+                                    <div class="slider">
+                                        <div class="progress"></div>
+                                    </div>
+                                    <div class="range-input">
+                                        <input type="range" class="range-min" min="10000" max="1000000" value="25000"
+                                            step="100">
+                                        <input type="range" class="range-max" min="10000" max="1000000" value="750000"
+                                            step="100">
+                                    </div>
+                                    <div class="price-input">
+                                        <div class="field">
+                                            <input type="number" class="input-min" value="25000">
+                                        </div>
+                                        <div class="field">
+                                            <input type="number" class="input-max" value="750000">
+                                        </div>
+                                    </div>
+                                </div>
+                            </details>
+                            <details class="filter-items-container">
+                                <summary class="filter-item flex-container">
+                                    <p>Brand</p>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </summary>
+                                <div class="filters-content flex-container">
+                                    <ul class="brands-list">
+                                        <li class="brands-list-items"><input type="checkbox" class="brand-name"
+                                                name="BMW"> BMW</li>
+                                        <li class="brands-list-items"><input type="checkbox" class="brand-name"
+                                                name="KAWASAKI"> KAWASAKI</li>
+                                        <li class="brands-list-items"><input type="checkbox" class="brand-name"
+                                                name="DUCTAI"> DUCTAI</li>
+                                        <li class="brands-list-items"><input type="checkbox" class="brand-name"
+                                                name="HARLEY DAVIDSON"> HARLEY DAVIDSON</li>
+                                    </ul>
+                                    <ul class="brands-list">
+                                        <li class="brands-list-items"><input type="checkbox" class="brand-name"
+                                                name="KTM"> KTM</li>
+                                        <li class="brands-list-items"><input type="checkbox" class="brand-name"
+                                                name="YAMAHA"> YAMAHA</li>
+                                        <li class="brands-list-items"><input type="checkbox" class="brand-name"
+                                                name="SUZUKI"> SUZUKI</li>
+                                        <li class="brands-list-items"><input type="checkbox" class="brand-name"
+                                                name="ROYAL ENFIELD"> ROYAL ENFIELD</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details class="filter-items-container">
+                                <summary class="filter-item flex-container">
+                                    <p>Displacement</p>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </summary>
+                                <div class="filters-content">
+                                    <ul class="brands-list">
+                                        <li class="brands-list-items"><input type="checkbox"> 998cc</li>
+                                        <li class="brands-list-items"><input type="checkbox"> 650cc</li>
+                                        <li class="brands-list-items"><input type="checkbox"> 390cc</li>
+                                        <li class="brands-list-items"><input type="checkbox"> 155cc</li>
+                                    </ul>
+                                </div>
+                            </details>
+                            <details class="filter-items-container">
+                                <summary class="filter-item flex-container">
+                                    <p>Body Style</p>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </summary>
+                                <div class="filters-content">
+                                    <ul class="brands-list">
+                                        <li class="brands-list-items"><input type="checkbox"> Sports Bike</li>
+                                        <li class="brands-list-items"><input type="checkbox"> Cruiser</li>
+                                        <li class="brands-list-items"><input type="checkbox"> Scooter</li>
+                                        <li class="brands-list-items"><input type="checkbox"> Street Bike</li>
+                                    </ul>
+                                </div>
+                            </details>
+                        </div>
+                    </form>
+                </aside>
+                <!-- -----------------Displaying products retrieved from json dadta------------- -->
+                <section class="products-data" id="products-data">
+                </section>
+            </div>
+            <div class="load-div">
+                <button id="load" class="load">
+                    <span class="showmore-text">Show More</span>&nbsp;&nbsp;<i class="fa-solid fa-plus plus-icon"></i>
+                </button>
+                <div class="scroll" id="scroll">
+                    <button id="scroll-top" class="scroll-top " title="Go to top">
+                        <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="modalBox" class="modal">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <div class="modal-name"></div>
+                    <div class="modal-image"></div>
+                    <div id="modal-description"></div>
+                </div>
+            </div>
+            <!--- Comparision Bar -->
+            <div id="home-comparision-bar">
+                <div>
+                    <span id="modalcomp-close">&times;</span>
+                </div>
+                <div class="compare-section">
+                    <span class="compare-title">
+                        <h4> Compare </h4>
+                        <p> Add upto 5 products </p>
+                        <div class="compare-count"> </div>
+                    </span>
+                    <span class="compare-list">
+                    </span>
+                    <span id="compare-btn">
+                        <button type="button" onclick="showCompareproductView()">compare</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Compare Products View-->
+        <div class="compare-products">
+            <div>
+                <h3> Comparison View
+                    <span id="modal-close" onclick="showHomeView()">&times;</span>
+                </h3>
+            </div>
+            <div class="row">
+                <div class="compare-features">
+                    <div class="compare-name">
+                        <h4> Name </h4>
+                    </div>
+                    <div class="compare-img">
+                        <h4> Image </h4>
+                    </div>
+                    <div>
+                        <h4> Price </h4>
+                    </div>
+                    <div>
+                        <h4> Displacement</h4>
+                    </div>
+                    <div>
+                        <h4> Mileage - ARAI</h4>
+                    </div>
+                    <div>
+                        <h4> Mileage - Owner</h4>
+                    </div>
+                    <div>
+                        <h4> Riding Range</h4>
+                    </div>
+                    <div>
+                        <h4> Top Speed</h4>
+                    </div>
+                    <div>
+                        <h4> Fuel Tank Capacity</h4>
+                    </div>
+                    <div>
+                        <h4> Emission Standard </h4>
+                    </div>
+                    <div>
+                        <h4> Fuel Type </h4>
+                    </div>
+                    <div>
+                        <h4> Front Brake Type </h4>
+                    </div>
+                    <div>
+                        <h4> Front Brake Size</h4>
+                    </div>
+                    <div>
+                        <h4> Rear Brake Type </h4>
+                    </div>
+                    <div>
+                        <h4> Rear Brake Size</h4>
+                    </div>
+                    <div>
+                        <h4> Wheel Type </h4>
+                    </div>
+                    <div>
+                        <h4> Front Wheel Size</h4>
+                    </div>
+                    <div>
+                        <h4> Rear Wheel Size</h4>
+                    </div>
+                    <div>
+                        <h4> Kerb Weight</h4>
+                    </div>
+                    <div>
+                        <h4> Seat Height</h4>
+                    </div>
+                    <div>
+                        <h4> Ground Clearance</h4>
+                    </div>
+                    <div>
+                        <h4> Overall Length</h4>
+                    </div>
+                    <div>
+                        <h4> Overall Width</h4>
+                    </div>
+                    <div>
+                        <h4> Overall Height</h4>
+                    </div>
+                    <div>
+                        <h4> Wheelbase</h4>
+                    </div>
+                    <div>
+                        <h4> Standard Warranty</h4>
+                    </div>
+                    <div>
+                        <h4> Standard Warranty</h4>
+                    </div>
+                </div>
+                <div class="compare-values">
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- ---------Footer Section ----- -->
+    <footer>
+        <!-- ---------------Top footer-------------- -->
+        <div class="footer-top">
+            <div class="footer-top-left">
+                <div class="getupdates">
+                    <h3>LET’S STAY IN TOUCH</h3>
+                    <p>Get updates on sales specials and more</p>
+                </div>
+                <div class="email-input-container">
+                    <input class="email-input" type="email" placeholder="Email Adress">
+                    <p class="subscribe">SUBCRIBE</p>
+                </div>
+            </div>
+            <div class="footer-top-right">
+                <div class="follow">
+                    <h3>FOLLOW BikersLove.</h3>
+                    <p>We want to hear from you</p>
+                </div>
+                <div class="socialmedia">
+                    <a class="social-icons" href="#"><i class="fa-brands fa-square-facebook fa-lg"></i></a>
+                    <a class="social-icons" href="#"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                    <a class="social-icons" href="#"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                    <a class="social-icons" href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- --------------middle footer----------------- -->
+        <div class="footer-middle">
+            <div class="middle-left">
+                <div class="left-links">
+                    <h4>About US</h4>
+                    <a class="footer-links" href="#">About Us</a>
+                    <a class="footer-links" href="#">Careers</a>
+                    <a class="footer-links" href="#">Blog</a>
+                    <a class="footer-links" href="#">News</a>
+                </div>
+                <div class="left-links">
+                    <h4>Support</h4>
+                    <a class="footer-links" href="#">Payments</a>
+                    <a class="footer-links" href="#">Shipping</a>
+                    <a class="footer-links" href="#">Cancellation & Return</a>
+                    <a class="footer-links" href="#">FAQ's</a>
+                </div>
+                <div class="left-links">
+                    <h4>Policy</h4>
+                    <a class="footer-links" href="#">Terms of Use</a>
+                    <a class="footer-links" href="#">Privacy Policy</a>
+                    <a class="footer-links" href="#">Intellectual Property</a>
+                    <a class="footer-links" href="#">Sitemap</a>
+                    <a class="footer-links" href="#">Security</a>
+                </div>
+                <div class="left-links mailus">
+                    <h4>Mail Us</h4>
+                    <p>17187 N. Laurel Park Dr., Ste. 110 Livonia, MI 48152 USA</p>
+                </div>
+            </div>
+            <div class="middle-right">
+                <div class="availability">
+                    <h3>1800 123 4567</h3>
+                    <p>Service hours: 09:00-21:00</p>
+                </div>
+                <div class="chartsupport-container">
+                    <a class="footer-links chatsupport" href="#">CHAT SUPPORT</a>
+                </div>
+                <div class="middle-right-payment">
+                    <p>PAYMENT METHODS</p>
+                    <a href="#"><img src="./images/visa.png" alt="visa card"></a>
+                    <a href="#"><img src="./images/mastercard.png" alt="master card"></a>
+                    <a href="#"><img src="./images/discover.png" alt="discover card"></a>
+                    <a href="#"><img src="./images/american-card.png" alt="american express card"></a>
+                    <a href="#"><img src="./images/paypal-icon.png" alt="paypal card"></a>
+                </div>
+            </div>
+
+        </div>
+        <!-- --------------------------------bottom-footer---------------------------------- -->
+        <div class="footer-end">
+            <p>Copyright © 2023 BikersLove. All Rights Reserved</p>
+        </div>
+    </footer>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
